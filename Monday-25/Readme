@@ -14,7 +14,7 @@ Got a task - // // // Welcome to store_name
 // // // 7. exit
 
 
-learned about various methods of array and implemented it in this task :--- arr.shift(), arr.find(), arr.splice()
+learned about various methods of array and implemented it in this task :--- arr.shift(), arr.find(), arr.splice(), arr.findIndex(), arr.map(), arr.filter(), arr.reduce(),forEach()
 learned about how heap memory works at the backend.
 learned about one more module of node js-- "prompt-sync".
 Implemented while loop in the task and if-else to apply conditions.
