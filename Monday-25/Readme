@@ -1,1 +1,5 @@
-LOOPS: 
+LOOPS:- For loop
+         While loop
+         For in
+         For of
+         do While
