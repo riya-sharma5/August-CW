@@ -3,3 +3,19 @@ LOOPS:- For loop
          For in
          For of
          do While
+
+Got a task - // // // Welcome to store_name
+// // // 1. enter item name to add in cart
+// // // 2. Display the cart item  with serial no.
+// // // 3. total item 
+// // // 4. delete the last item 
+// // // 5. delete first item
+// // // 6. enter the name to delete it 
+// // // 7. exit
+
+
+learned about various methods of array and implemented it in this task :--- arr.shift(), arr.find(), arr.splice()
+learned about how heap memory works at the backend.
+learned about one more module of node js-- "prompt-sync".
+Implemented while loop in the task and if-else to apply conditions.
+Implemented Array and String in this task.

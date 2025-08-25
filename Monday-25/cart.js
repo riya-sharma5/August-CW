@@ -1,13 +1,3 @@
-// // // Welcome to store_name
-// // // 1. enter item name to add in cart
-// // // 2. Display the cart item  with serial no.
-// // // 3. total item 
-// // // 4. delete the last item 
-// // // 5. delete first item
-// // // 6. enter the name to delete it 
-// // // 7. exit
-
-
 const prompt = require("prompt-sync")();
 
 let cart = [];
