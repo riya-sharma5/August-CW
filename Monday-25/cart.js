@@ -37,17 +37,16 @@ while (choice !== 7) {
             }
         }
     }
-
-    else if (choice === 2) {
-        if (cart.length === 0) {
-            console.log("Cart is empty");
-        } else {
-            console.log("Cart items:");
-            for (let i = 0; i < cart.length; i++) {
-                console.log((i + 1) + ". " + cart[i]);
-            }
-        }
+else if (choice === 2) {
+    if (cart.length === 0) {
+        console.log("Cart is empty");
+    } else {
+        console.log("Cart items:");
+        cart.forEach((item, index) => {
+            console.log((index + 1) + ". " + item);
+        });
     }
+}
 
     else if (choice === 3) {
         console.log("Total items: " + cart.length);
