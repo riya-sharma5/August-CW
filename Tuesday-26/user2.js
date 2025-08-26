@@ -12,7 +12,6 @@ function userNameGenerator(name) {
     return base + randomNum;
 }
 
-
 function findUserByEmail(email) {
     return users.find(user => user.email.toLowerCase() === email.toLowerCase());
 }
