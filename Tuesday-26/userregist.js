@@ -39,9 +39,9 @@ while (true) {
   }
 
   else if (choice === 3) {
-    const name = prompt("Enter your name: ");
-    const email = prompt("Enter your email: ");
-    const role = prompt("Enter your role (Admin/Employee): ");
+    const name = prompt("Enter your name : ");
+    const email = prompt("Enter your email : ");
+    const role = prompt("Enter your role (Admin/Employee) : ");
     const username = userNameGenerator(name);
 
     const newUser = {
@@ -53,7 +53,7 @@ while (true) {
 
     users.push(newUser);
     console.log("Registration successful. Please login.");
-    console.log("Generated username is :", username);
+    console.log("username :", username);
 
   } else if (choice === 4) {
     console.log("Thank you for Exiting...");
