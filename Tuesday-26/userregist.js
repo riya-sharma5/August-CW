@@ -25,6 +25,11 @@ while (true) {
     } else if (choice === 3) {
         const name = prompt("Enter your name: ");
         const email = prompt("Enter your email: ");
+         const duplicate = users.some(user => user.email.toLowerCase() === email.toLowerCase());
+        if (duplicate) {
+            console.log("email already exists. Please try registering again.");
+      continue;
+        }
         console.log("Select your role: ");
         console.log("1. Admin");
         console.log("2. Employee");
@@ -36,14 +41,11 @@ while (true) {
 
         const username = userNameGenerator(name);
 
-     const duplicate = users.some(user => user.name.toLowerCase() === name.toLowerCase());
-        if (duplicate) {
-            console.log("Username already exists. Please try registering again.");
-        } else {
+         {
             const newUser = {
                 name: name,
                 email: email,
-                role: role === 1 ? "Admin" : "Employee",
+                role: role  === 1 ? "Admin" : "Employee",
                 username: username
             };
 
