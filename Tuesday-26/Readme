@@ -3,6 +3,8 @@
 // learned about how to generate random username and number
 // Learned about event loop, v8 engine, node js, closures, execution context
 //  Learned about some() method where we can check whether its true ot false
+// used various methods of array like find, splice in the task, also used forEach 
+
 
 
 // Please select one option to proceed-
@@ -10,6 +12,7 @@
 // 2. Login as employee
 // 3. Register yourself
 // 4. Exit
+
 
 // Case 3: Register Yourself
 // Ask for Name, Email, Role (select Admin / Employee)
@@ -53,3 +56,4 @@
 // 2. Login as employee
 // 3. Register yourself
 // 4. Exit
+

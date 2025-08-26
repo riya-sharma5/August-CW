@@ -32,7 +32,6 @@ while (true) {
 
         if (role !== 1 && role !== 2) {
             console.log("Invalid role selected. Registration failed.");
-            continue;
         }
 
         const username = userNameGenerator(name);
