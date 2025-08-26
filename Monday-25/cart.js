@@ -4,7 +4,7 @@ let cart = [];
 let choice = 0;
 
 while (choice !== 7) {
-    console.log("\nWelcome to the store");
+    console.log("Welcome to the store");
     console.log("1. Enter item name to add in cart");
     console.log("2. Display the cart item with serial no.");
     console.log("3. Total items");
