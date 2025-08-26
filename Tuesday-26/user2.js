@@ -32,12 +32,12 @@ while (true) {
 
         if (!user) {
             console.log(" You are not registered. Register yourself.");
-        
+        continue;
         }
 
         if (user.role !== "Admin") {
             console.log(" You are not authorized to login.");
-          
+          continue;
         }
 
         console.clear();
@@ -106,35 +106,36 @@ while (true) {
     } else if (choice === 2) {
         console.log("In progress...");
 
-    } else if (choice === 3) {
+    }else if (choice === 3) {
         const name = prompt("Enter your name: ");
         const email = prompt("Enter your email: ");
         console.log("Select your role: ");
         console.log("1. Admin");
         console.log("2. Employee");
+        let role = parseInt(prompt("Enter your role (1 or 2): "));
 
-        let roleInput = parseInt(prompt("Enter your role (1 or 2): "));
-        if (![1, 2].includes(roleInput)) {
+        if (role !== 1 && role !== 2) {
             console.log("Invalid role selected. Registration failed.");
-            
-        }
-
-        if (findUserByEmail(email)) {
-            console.log("Email already registered.");
-            
         }
 
         const username = userNameGenerator(name);
-        const newUser = {
-            name,
-            email,
-            role: roleInput === 1 ? "Admin" : "Employee",
-            username
-        };
 
-        users.push(newUser);
-        console.log("Registration successful. Please login.");
-        console.log("Your generated username is:", username);
+     const duplicate = users.some(user => user.name.toLowerCase() === name.toLowerCase());
+        if (duplicate) {
+            console.log("Username already exists. Please try registering again.");
+        } else {
+            const newUser = {
+                name: name,
+                email: email,
+                role: role === 1 ? "Admin" : "Employee",
+                username: username
+            };
+
+            users.push(newUser);
+            console.log("Registration successful. Please login.");
+            console.log("Your generated username is:", username);
+        }
+
 
     } else if (choice === 4) {
         console.log("Thank you for using the system. Exiting...");
