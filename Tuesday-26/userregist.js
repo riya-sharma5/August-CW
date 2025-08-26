@@ -18,9 +18,10 @@ while (true) {
     choice = parseInt(prompt("Enter your choice: "));
 
     if (choice === 1) {
-        console.log("Admin login is in progress...");
-    } else if (choice === 2) {
+      console.log("In progress....");
+} else if (choice === 2) {
         console.log("Employee login is in progress...");
+
     } else if (choice === 3) {
         const name = prompt("Enter your name: ");
         const email = prompt("Enter your email: ");
@@ -52,10 +53,13 @@ while (true) {
             console.log("Your generated username is:", username);
         }
 
+
     } else if (choice === 4) {
         console.log("Thank you for using the system. Exiting...");
         break;
-    } else {
+    }
+    
+    else {
        console.log("Invalid choice");
     }
 }

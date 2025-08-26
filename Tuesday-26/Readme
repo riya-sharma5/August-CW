@@ -18,3 +18,38 @@
 // Show message: "Registration successful. Please login."
 // Case 4: Exit
 // Print "Thank you. Exiting system..." and stop program
+
+
+// Case 1-
+// Enter your email  -
+// scenario 1 - when email found with the incorrect role then show error message - "You are not authorized to login"
+// scenario 2 - when email not found then show error message - "Your not registered. Register yourself"
+// scenario 3 -  Everything goes well then onboard the user by clearing the console
+// :white_check_mark: Welcome to CW Admin
+// 1. Add Laptops
+// 2. View All Laptops
+// 3. Search Laptop by Name
+// 4. Delete Laptop by Name
+// 5. Logout
+// > 1
+// Enter Laptop Name: MacBook Pro
+// Enter Brand: Apple
+// Enter Quantity: 3
+// :white_check_mark: Laptop added successfully!
+// > 2
+// Laptop Inventory:
+// - MacBook Pro | Apple | Qty: 3
+// - MacBook Pro | Apple | Qty: 3
+// - MacBook Pro | Apple | Qty: 3
+// >3
+// Laptop Detail:
+// - MacBook Pro | Apple | Qty: 3
+// 4>
+// Delete that laptop
+// >5
+// Note: clear console
+// Please select one option to proceed-
+// 1. Login as CW Admin
+// 2. Login as employee
+// 3. Register yourself
+// 4. Exit
