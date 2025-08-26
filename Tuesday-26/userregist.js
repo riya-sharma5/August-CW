@@ -1,17 +1,3 @@
-// Please select one option to proceed-
-// 1. Login as CW Admin
-// 2. Login as employee
-// 3. Register yourself
-// 4. Exit
-
-// Case 3: Register Yourself
-// Ask for Name, Email, Role (select Admin / Employee)
-// Generate username (using username generator we built earlier)
-// Save user in users array
-// Show message: "Registration successful. Please login."
-// Case 4: Exit
-// Print "Thank you. Exiting system..." and stop program
-
 const prompt = require ('prompt-sync')();
 
 let choice = 0;
