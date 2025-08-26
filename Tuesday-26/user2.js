@@ -125,10 +125,10 @@ while (true) {
             console.log("Username already exists. Please try registering again.");
         } else {
             const newUser = {
-                name: name,
-                email: email,
+                name,
+                email,
                 role: role === 1 ? "Admin" : "Employee",
-                username: username
+                username
             };
 
             users.push(newUser);
