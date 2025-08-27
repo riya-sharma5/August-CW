@@ -1,0 +1,46 @@
+Learned about join()--built in method used on array in javascript.--it will take input an array and output a string.
+Also used forEach method in the task to loop over array.
+Used findIndex, splice, find in the task
+
+case 2
+Enter your email  -
+scenario 1 - when email not found then show error message - "Your not registered. Register yourself"
+scenario 2 -  Everything goes well then onboard the user by clearing the console
+Welcome Employee
+1. About Me
+2. View All Laptops
+3. Search Laptop by Name
+4. Take One
+5. Submit One
+6. Logout
+1>
+Shows employee details:
+Name
+Username
+Role
+Borrowed Laptops
+e.g. Name: Harsh Kumar
+Username: harsh.kumar42
+Role: Employee
+Borrowed Laptops: MacBook Pro, ThinkPad X1
+> 2
+Laptop Inventory:
+- MacBook Pro | Apple | Qty: 3
+- MacBook Pro | Apple | Qty: 3
+- MacBook Pro | Apple | Qty: 3
+>3
+Laptop Detail:
+- MacBook Pro | Apple | Qty: 3
+>4
+Employee enters Laptop Name.
+Check if available (quantity > 0).
+Reduce laptop quantity by 1.
+Add laptop to employee’s borrowedLaptops list.
+Show: :white_check_mark: You have borrowed "MacBook Pro"
+>5
+Submit One (Return a Laptop)
+Employee enters Name.
+Check if in their borrowedLaptops list.
+Increase quantity by 1 in inventory.
+Remove it from borrowedLaptops.
+Show::white_check_mark: You have returned "MacBook Pro"
