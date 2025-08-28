@@ -51,11 +51,13 @@ while (true) {
     let adminChoice = parseInt(prompt("Enter your choice: "));
 if (adminChoice === 1) {
     const name = prompt("Enter Laptop Name: ");
-    const existingLaptop = laptops.find(l => l.name.toLowerCase() === name.toLowerCase());
+    const existingLaptop = laptops.find(
+        l => l.name.toLowerCase() === name.toLowerCase()
+    );
 
     if (existingLaptop) {
-       
-        const addQty = parseInt(prompt("Laptop already exists. Enter quantity to add: "));
+      
+        const addQty = parseInt(prompt(`"${existingLaptop.name}" already exists. Enter quantity to add: `));
         if (!isNaN(addQty) && addQty > 0) {
             existingLaptop.quantity += addQty;
             console.log(`Updated quantity. New quantity of "${existingLaptop.name}" is ${existingLaptop.quantity}`);
@@ -63,7 +65,7 @@ if (adminChoice === 1) {
             console.log("Invalid quantity input.");
         }
     } else {
-       
+      
         const brand = prompt("Enter Brand: ");
         const quantity = parseInt(prompt("Enter Quantity: "));
 
