@@ -1,0 +1,26 @@
+:white_check_mark: Welcome to CW Admin
+// 1. Add Laptops
+// 2. View All Laptops
+// 3. Search Laptop by Name
+// 4. Delete Laptop by Name
+// 5. Logout
+
+1....So here, there was a problem in delete option:- that is why added a condition i.e if its borrowed or quantity is zero it cant be deleted.
+2... second problem is in adding laptop...now we have to remove a duplicacy addition in the laptop name 
+
+Welcome Employee
+1. About Me
+2. View All Laptops
+3. Search Laptop by Name
+4. Take One
+5. Submit One
+6. Logout
+
+Also, in employee case 4:- i have added username with the laptop name 
+
+
+
+
+
+
+

@@ -48,21 +48,35 @@ while (true) {
             console.log("4. Delete Laptop by Name");
             console.log("5. Logout");
 
-            let adminChoice = parseInt(prompt("Enter your choice: "));
+    let adminChoice = parseInt(prompt("Enter your choice: "));
+if (adminChoice === 1) {
+    const name = prompt("Enter Laptop Name: ");
+    const existingLaptop = laptops.find(l => l.name.toLowerCase() === name.toLowerCase());
 
-            if (adminChoice === 1) {
-                const name = prompt("Enter Laptop Name: ");
-                 const brand = prompt("Enter Brand: ");
-                const quantity = parseInt(prompt("Enter Quantity: "));
+    if (existingLaptop) {
+       
+        const addQty = parseInt(prompt("Laptop already exists. Enter quantity to add: "));
+        if (!isNaN(addQty) && addQty > 0) {
+            existingLaptop.quantity += addQty;
+            console.log(`Updated quantity. New quantity of "${existingLaptop.name}" is ${existingLaptop.quantity}`);
+        } else {
+            console.log("Invalid quantity input.");
+        }
+    } else {
+       
+        const brand = prompt("Enter Brand: ");
+        const quantity = parseInt(prompt("Enter Quantity: "));
 
-                if (name && brand && quantity > 0) {
-                    laptops.push({ name, brand, quantity });
-                    console.log("Laptop added successfully!");
-                } else {
-                    console.log("Invalid input. Try again.");
-                }
+        if (name && brand && quantity > 0) {
+            laptops.push({ name, brand, quantity });
+            console.log("Laptop added successfully!");
+        } else {
+            console.log("Invalid input. Try again.");
+        }
+    }
+}
 
-            } else if (adminChoice === 2) {
+ else if (adminChoice === 2) {
                 if (laptops.length === 0) {
                     console.log("No laptops available.");
                 } else {

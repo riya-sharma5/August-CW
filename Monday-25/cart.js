@@ -20,7 +20,7 @@ while (choice !== 7) {
         if (item === '') {
             console.log("You have to write the name!");
         } else {
-           
+
             let duplicate = false;
             for (let i = 0; i < cart.length; i++) {
                 if (cart[i].toLowerCase() === item.toLowerCase()) {
@@ -37,16 +37,16 @@ while (choice !== 7) {
             }
         }
     }
-else if (choice === 2) {
-    if (cart.length === 0) {
-        console.log("Cart is empty");
-    } else {
-        console.log("Cart items:");
-        cart.forEach((item, index) => {
-            console.log((index + 1) + ". " + item);
-        });
+    else if (choice === 2) {
+        if (cart.length === 0) {
+            console.log("Cart is empty");
+        } else {
+            console.log("Cart items:");
+            cart.forEach((item, index) => {
+                console.log((index + 1) + ". " + item);
+            });
+        }
     }
-}
 
     else if (choice === 3) {
         console.log("Total items: " + cart.length);
@@ -82,25 +82,25 @@ else if (choice === 2) {
             console.log("Cart is already empty");
         }
     }
-else if (choice === 6) {
-    if (cart.length > 0) {
-        let itemToDelete = prompt("Enter the name of the item to delete: ");
-        let index = cart.findIndex(function(item) {
-            return item === itemToDelete;
-        });
+    else if (choice === 6) {
+        if (cart.length > 0) {
+            let itemToDelete = prompt("Enter the name of the item to delete: ");
+            let index = cart.findIndex(function (item) {
+                return item === itemToDelete;
+            });
 
-        if (index !== -1) {
-           cart.splice(index, 1);
-            console.log(itemToDelete + " deleted from cart.");
-        } else {
-            console.log("Item not found in the cart.");
+            if (index !== -1) {
+                cart.splice(index, 1);
+                console.log(itemToDelete + " deleted from cart.");
+            } else {
+                console.log("Item not found in the cart.");
+            }
+
         }
-
-    } 
-    else {
-        console.log("Cart is already empty.");
+        else {
+            console.log("Cart is already empty.");
+        }
     }
-}
 
 
 
