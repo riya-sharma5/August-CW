@@ -1,0 +1,46 @@
+Learned about closures, sync and async, call backs,  and promises 
+In promises, We have learned about resolve, reject, pending, fullfilled, settle, .then(), .catch()
+
+// Welcome to ElectroMart
+// Please select one option to proceed -
+// 1. Login as Admin
+// 2. Login as Customer
+// 3. Register yourself
+// 4. See all products
+// 5. Exit
+
+
+
+// case 1:
+// Welcome ElectroMart Admin
+
+// 1. Add Product (there should be no duplicate)
+// 2. View All Products 
+// 3. Search Product by Name
+// 5. Remove Product
+// 6. Logout
+
+
+// case 2
+// Welcome Customer
+
+// 1. About Me
+// 2. See all Products
+// 3. Search Product by Name
+// 4. Add to Cart
+// 5. View Cart
+// 6. Update Cart Item Quantity
+// 7. Remove from Cart
+// 8. Apply Coupon
+// 9. Checkout
+// 10. Logout
+
+
+
+
+// implements this task and the code must be modularise(use function ) and cannot use ES6 properties
+
+// Used tha same methods like .some() but used functions to wrap the choices and calls them when choices Came  
+
+
+
