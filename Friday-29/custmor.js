@@ -3,6 +3,7 @@ const prompt = require("prompt-sync")();
 let choice = 0;
 let users = [];
 let products = [];
+let carts = {}; 
 
 function userNameGenerator(name) {
     const base = name.toLowerCase().replace(/[^\w]+/g, '');
@@ -62,7 +63,6 @@ function searchProductByName() {
     }
 }
 
-
 function updateProductByName() {
     const name = prompt("Enter product name to update: ");
     const index = findProductIndexByName(name);
@@ -104,61 +104,158 @@ function removeProduct() {
 function handleAdminChoice() {
     let adminChoice = parseInt(prompt("Enter your choice: "));
     switch (adminChoice) {
-        case 1:
-            addProduct();
-            break;
-        case 2:
-            viewAllProducts();
-            break;
-        case 3:
-            searchProductByName();
-            break;
-        case 4:
-            updateProductByName();
-            break;
-        case 5:
-            removeProduct();
-            break;
-        case 6:
-            console.log("Logging out...");
-            return false;
-        default:
-            console.log("Invalid choice.");
+        case 1: addProduct(); break;
+        case 2: viewAllProducts(); break;
+        case 3: searchProductByName(); break;
+        case 4: updateProductByName(); break;
+        case 5: removeProduct(); break;
+        case 6: console.log("Logging out..."); return false;
+        default: console.log("Invalid choice.");
     }
     return true;
 }
 
+function aboutMe(currentUser) {
+    console.log("\n--- About Me ---");
+    console.log(`Name: ${currentUser.name}`);
+    console.log(`Email: ${currentUser.email}`);
+    console.log(`Username: ${currentUser.username}`);
+    console.log(`Role: ${currentUser.identity}\n`);
+}
 
-// 1. About Me
-// 2. See all Products
-// 3. Search Product by Name
-// 4. Add to Cart
-// 5. View Cart
-// 6. Update Cart Item Quantity
-// 7. Remove from Cart
-// 8. Apply Coupon
-// 9. Checkout
-// 10. Logout
+function viewCart(username) {
+    const cart = carts[username] || [];
+    if (cart.length === 0) {
+        console.log("Your cart is empty.");
+        return;
+    }
 
-function handleCustomerChoice() {
+    console.log("\n--- Your Cart ---");
+    let total = 0;
+    cart.forEach((item, i) => {
+        console.log(`${i + 1}. ${item.name} | Price: ${item.price} | Qty: ${item.qty} | Subtotal: ${item.price * item.qty}`);
+        total += item.price * item.qty;
+    });
+    console.log("Total: " + total);
+}
+
+function addToCart(username) {
+    const name = prompt("Enter product name to add to cart: ");
+    const index = findProductIndexByName(name);
+
+    if (index === -1) {
+        console.log("Product not found");
+        return;
+    }
+
+    const qty = parseInt(prompt("Enter quantity: "));
+    if (isNaN(qty) || qty <= 0 || qty > products[index].stock) {
+        console.log("Invalid quantity.");
+        return;
+    }
+
+    if (!carts[username]) carts[username] = [];
+    let cart = carts[username];
+    let existing = cart.find(item => item.name.toLowerCase() === name.toLowerCase());
+
+    if (existing) {
+        existing.qty += qty;
+    } else {
+        cart.push({ name: products[index].name, price: products[index].price, qty,});
+    }
+    console.log("Added to cart.");
+}
+
+function updateCartItem(username) {
+    const cart = carts[username] || [];
+    if (cart.length === 0) {
+        console.log("Cart is empty.");
+        return;
+    }
+
+    viewCart(username);
+    const index = parseInt(prompt("Enter item number to update: ")) - 1;
+
+    if (index < 0 || index >= cart.length) {
+        console.log("Invalid item.");
+        return;
+    }
+
+    const qty = parseInt(prompt("Enter new quantity: "));
+    if (isNaN(qty) || qty <= 0) {
+        console.log("Invalid quantity.");
+        return;
+    }
+
+    cart[index].qty = qty;
+   
+    console.log("Cart updated.");
+}
+
+function removeFromCart(username) {
+    const cart = carts[username] || [];
+    if (cart.length === 0) {
+        console.log("Cart is empty.");
+        return;
+    }
+
+    viewCart(username);
+    const index = parseInt(prompt("Enter item number to remove: ")) - 1;
+
+    if (index < 0 || index >= cart.length) {
+        console.log("Invalid item.");
+        return;
+    }
+
+    cart.splice(index, 1);
+    console.log("Item removed from cart.");
+}
+
+function applyCoupon(username) {
+    const cart = carts[username] || [];
+    if (cart.length === 0) {
+        console.log("Cart is empty.");
+        return;
+    }
+
+    let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const coupon = prompt("Enter coupon code (DISCOUNT10 for 10% off): ");
+
+    if (coupon === "DISCOUNT10") {
+        total = total * 0.9;
+        console.log("Coupon applied! New Total: " + total);
+    } else {
+        console.log("Invalid coupon.");
+    }
+}
+
+function checkout(username) {
+    const cart = carts[username] || [];
+    if (cart.length === 0) {
+        console.log("Cart is empty.");
+        return;
+    }
+
+    let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    console.log("Final Amount to Pay: " + total);
+    console.log("Checkout successful! Thank you for shopping.");
+    carts[username] = []; 
+}
+
+function handleCustomerChoice(currentUser) {
     let customerChoice = parseInt(prompt("Enter your choice: "));
     switch (customerChoice) {
-        case 1:
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-            console.log("In progress...");
-            break;
-        case 10:
-            console.log("Logging out...");
-            return false;
-        default:
-            console.log("Invalid choice.");
+        case 1: aboutMe(currentUser); break;
+        case 2: viewAllProducts(); break;
+        case 3: searchProductByName(); break;
+        case 4: addToCart(currentUser.username); break;
+        case 5: viewCart(currentUser.username); break;
+        case 6: updateCartItem(currentUser.username); break;
+        case 7: removeFromCart(currentUser.username); break;
+        case 8: applyCoupon(currentUser.username); break;
+        case 9: checkout(currentUser.username); break;
+        case 10: console.log("Logging out..."); return false;
+        default: console.log("Invalid choice.");
     }
     return true;
 }
@@ -194,11 +291,11 @@ function registerUser() {
     users.push(newUser);
     console.log("\nRegistration successful");
     console.log("Your generated username is: ", username, "\n");
+    return newUser;
 }
 
-
 while (true) {
-    console.log('\x1b[36m%s\x1b[0m',"\nWelcome to the Electromart\n");
+    console.log("\nWelcome to the Electromart\n");
     console.log("1. Login as Admin");
     console.log("2. Login as Customer");
     console.log("3. Register yourself");
@@ -224,10 +321,16 @@ while (true) {
             break;
 
         case 2:
+            const email = prompt("Enter your registered email: ");
+            const currentUser = findUserByEmail(email);
+            if (!currentUser || currentUser.identity !== "Customer") {
+                console.log("Customer not found. Please register first.");
+                break;
+            }
             while (true) {
                 console.log("\n---  Customer  ---");
                 console.log("1. About Me");
-                console.log("2. Search All Products");
+                console.log("2. View All Products");
                 console.log("3. Search Product by Name");
                 console.log("4. Add to Cart");
                 console.log("5. View Cart");
@@ -237,23 +340,16 @@ while (true) {
                 console.log("9. Checkout");
                 console.log("10. Logout");
 
-                const continueCustomer = handleCustomerChoice();
+                const continueCustomer = handleCustomerChoice(currentUser);
                 if (!continueCustomer) break;
             }
             break;
 
-        case 3:
-            registerUser();
-            break;
-
-        case 4:
-            viewAllProducts();
-            break;
-
+        case 3: registerUser(); break;
+        case 4: viewAllProducts(); break;
         case 5:
             console.log("Thank you for using the system. Exiting...");
             process.exit(0);
-
         default:
             console.log("Invalid choice. Try again.");
     }
